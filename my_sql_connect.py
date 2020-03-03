@@ -1,10 +1,14 @@
 import mysql.connector
 
 def connect_dbs():
-    mydb = mysql.connector.connect(
-        host="host",
-        user="username",
-        passwd="password",
-        database="db"
-    )
-    return mydb
+    try:
+        mydb = mysql.connector.connect(
+            host="host",
+            user="user",
+            passwd="password",
+            database="db"
+        )
+        return mydb
+
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
